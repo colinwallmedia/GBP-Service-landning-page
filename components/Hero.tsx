@@ -1,69 +1,97 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Star, CheckCircle2 } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-lemon-50 to-white">
-      {/* Abstract Background Shapes */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-fresh-100/30 rounded-bl-[100px] -z-10 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-lemon-200/40 rounded-tr-[100px] -z-10 blur-3xl" />
+    <section className="relative pt-32 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-lemon-100/50 via-white to-fresh-50/30">
+      {/* Decorative Animated Elements */}
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.1, 1],
+          rotate: [0, 5, 0]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-24 -right-24 w-96 h-96 bg-lemon-200/40 rounded-full blur-[100px] -z-10" 
+      />
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          rotate: [0, -5, 0]
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 -left-24 w-80 h-80 bg-fresh-200/30 rounded-full blur-[80px] -z-10" 
+      />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fresh-100 text-fresh-800 font-medium text-sm mb-8 border border-fresh-200"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-lemon-200 text-slate-800 font-semibold text-sm mb-10 shadow-sm"
           >
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fresh-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-fresh-500"></span>
+            <span className="flex items-center gap-1 text-lemon-600">
+              <Star className="w-4 h-4 fill-lemon-500" />
+              <Star className="w-4 h-4 fill-lemon-500" />
+              <Star className="w-4 h-4 fill-lemon-500" />
+              <Star className="w-4 h-4 fill-lemon-500" />
+              <Star className="w-4 h-4 fill-lemon-500" />
             </span>
-            Accepting New Clients for 2026
+            <span className="border-l border-slate-200 pl-2">The #1 Rated Local SEO Agency for Trades</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[2.0rem] md:text-[3.4rem] lg:text-[4.0rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-12"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.05] mb-8"
           >
-            Start Seeing a Predictable <span className="text-fresh-600 decoration-4 decoration-lemon-400 underline-offset-4">20-50</span> Additional Enquiries Every Month From Prospects Actively Searching for Your Services <span className="block mt-3 text-[1.45rem] md:text-[2.18rem] lg:text-[2.91rem] text-slate-800 border-b-4 border-lemon-400 w-fit mx-auto pb-1">Without Paid Ads.</span>
+            Wake Up to <span className="text-fresh-600 relative inline-block">
+              20-50 New Enquiries
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 358 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.26C1 5.26 120.5 -1.24 357 5.26" stroke="#FACC15" strokeWidth="6" strokeLinecap="round"/>
+              </svg>
+            </span> Every Month
           </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-gradient-to-br from-white to-lemon-50 p-6 rounded-2xl shadow-xl shadow-lemon-200/20 border-2 border-lemon-200 max-w-xl mx-auto mb-10 transform rotate-1 hover:rotate-0 transition-transform duration-300"
-          >
-             <div className="flex items-start gap-4">
-                <div className="shrink-0 drop-shadow-md">
-                   <ShieldCheck className="w-12 h-12 text-white fill-fresh-500" />
-                </div>
-                <div className="text-left">
-                  <p className="font-bold text-slate-800 text-lg mb-1">Risk Reversal Guarantee</p>
-                  <p className="text-slate-600">If enquiry growth doesn’t increase by at least <span className="font-bold text-slate-900 bg-lemon-200/50 px-1 rounded">10 in a month</span>, that month is 100% free. No risk. No faff.</p>
-                </div>
-             </div>
-          </motion.div>
-
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            <button 
+            Stop burning cash on Facebook ads. Start dominating the Google search results where your customers are <span className="text-slate-900 font-bold underline decoration-fresh-400">already looking for you.</span>
+          </motion.p>
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group bg-slate-900 text-white text-lg md:text-xl font-bold py-4 px-8 md:px-12 rounded-full shadow-2xl hover:bg-slate-800 hover:scale-105 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 mx-auto"
+              className="group bg-slate-900 text-white text-lg font-bold py-5 px-10 rounded-2xl shadow-2xl hover:bg-slate-800 transition-all flex items-center gap-3"
             >
-              Start Here
+              Get Your Free Visibility Audit
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <p className="mt-4 text-sm text-slate-500">Free Visibility Audit • See exactly where you're losing customers</p>
-          </motion.div>
+            </motion.button>
+            
+            <div className="flex flex-col items-start gap-1">
+              <div className="flex items-center gap-2 text-fresh-600 font-bold">
+                <CheckCircle2 className="w-5 h-5" />
+                <span>Risk-Free Guarantee</span>
+              </div>
+              <p className="text-sm text-slate-500 italic">"No growth? You don't pay. Simple."</p>
+            </div>
+          </div>
+
+          {/* Trust Ticker */}
+          <div className="pt-8 border-t border-slate-200/60 max-w-4xl mx-auto">
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Trusted by Local Business Owners across the UK</p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+              {['Electrical', 'Plumbing', 'Landscaping', 'Roofing', 'Construction'].map((trade) => (
+                <div key={trade} className="text-xl font-black text-slate-400 select-none">{trade}</div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

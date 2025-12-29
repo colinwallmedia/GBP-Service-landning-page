@@ -2,82 +2,82 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Settings, PenTool, Target, Star, BarChart3, Share2 } from 'lucide-react';
 
-const SystemPoint = ({ number, title, desc, icon: Icon }: { number: string, title: string, desc: string, icon: any }) => (
+const SystemPoint = ({ number, title, desc, icon: Icon, className = "" }: { number: string, title: string, desc: string, icon: any, className?: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="flex gap-6 p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 group"
+    className={`p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 group relative overflow-hidden ${className}`}
   >
-    <div className="shrink-0 relative">
-      <div className="w-14 h-14 bg-fresh-50 rounded-2xl flex items-center justify-center group-hover:bg-fresh-100 transition-colors">
-        <Icon className="w-7 h-7 text-fresh-600" />
-      </div>
-      <span className="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">
-        {number}
-      </span>
+    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+       <Icon className="w-24 h-24" />
     </div>
-    <div>
-      <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
-      <p className="text-slate-600 leading-relaxed">{desc}</p>
+    
+    <div className="relative z-10">
+      <div className="w-14 h-14 bg-lemon-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-lemon-100 transition-colors">
+        <Icon className="w-7 h-7 text-lemon-600" />
+      </div>
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-fresh-500 font-bold text-sm bg-fresh-50 px-2 py-1 rounded">Phase {number}</span>
+        <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+      </div>
+      <p className="text-slate-600 leading-relaxed text-sm md:text-base">{desc}</p>
     </div>
   </motion.div>
 );
 
 export const SystemBreakdown: React.FC = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-        {/* Background blobs */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-lemon-50 rounded-full blur-3xl -z-10 opacity-60" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-fresh-50 rounded-full blur-3xl -z-10 opacity-60" />
-
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <span className="text-lemon-600 font-bold tracking-wider uppercase text-sm">The Solution</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mt-3 mb-6">
-            Introducing the 'Local Customer Enquiry Engine'
+          <span className="inline-block px-4 py-1.5 bg-fresh-100 text-fresh-700 rounded-full font-bold text-sm mb-4">THE BLUEPRINT</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            The Local Customer <br/>Enquiry Engine
           </h2>
-          <p className="text-xl text-slate-600">
-            A done-for-you visibility and search-driven engine for local service businesses who want more predictable inbound customers every month - without paying for ads.
+          <p className="text-lg text-slate-600 mt-6">
+            We don't just "post on Google". We engineer a visibility machine that forces Google to put you in front of local buyers.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <SystemPoint 
-            number="1"
+            number="01"
             icon={Settings}
-            title="Full Google Business Profile Optimisation"
-            desc="Cleaning, structuring, and rebuilding your profile so Google actually trusts it. Most profiles are 40-60% under-optimised without owners realising."
+            title="Profile Re-Engineering"
+            desc="Cleaning, structuring, and rebuilding your profile so Google actually trusts it. Most profiles are 40-60% under-optimised."
+            className="lg:col-span-2"
           />
           <SystemPoint 
-            number="2"
-            icon={PenTool}
-            title="Weekly Content & Posting Strategy"
-            desc="Google rewards activity. We publish SEO-driven content directly to your profile every week, increasing search visibility and trust."
-          />
-          <SystemPoint 
-            number="3"
+            number="02"
             icon={Target}
-            title="Category, Keyword & Competitor Mapping"
-            desc="We engineer your profile around the most profitable search terms in your local area - based on real data, not guesswork."
+            title="Hyper-Local Mapping"
+            desc="We map out the exact keywords and categories your competitors are winning and steal their share."
           />
           <SystemPoint 
-            number="4"
+            number="03"
+            icon={PenTool}
+            title="Weekly Velocity"
+            desc="Fresh, SEO-driven updates every single week. Google rewards active businesses with higher rankings."
+          />
+          <SystemPoint 
+            number="04"
             icon={Star}
-            title="Review Growth Framework"
-            desc="Turn customers into automatic positive reviews using our friction-free reputation workflow."
+            title="Trust Generator"
+            desc="Our proprietary framework for getting more 5-star reviews without you having to chase customers."
           />
           <SystemPoint 
-            number="5"
+            number="05"
             icon={Share2}
-            title="Ranking Signals Built for Local Dominance"
-            desc="Photos, services, Q&As, geotag signalling, authority assets - everything Google uses to decide who gets shown first."
+            title="Authority Signals"
+            desc="Advanced geotagging and service stacking that makes you the dominant authority in your town."
           />
           <SystemPoint 
-            number="6"
+            number="06"
             icon={BarChart3}
-            title="Monthly Visibility & Enquiry Reporting"
-            desc="Plain-English tracking so you can see what’s happening, what’s improving, and how much extra business your profile is generating."
+            title="Truth Reporting"
+            desc="No fluff. Just real data on how many phone calls, messages, and enquiries we've generated."
+            className="lg:col-span-3 bg-slate-900 border-none group"
           />
         </div>
       </div>
