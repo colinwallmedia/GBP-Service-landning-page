@@ -10,14 +10,14 @@ declare global {
 
 export const LocalRankChecker: React.FC = () => {
   useEffect(() => {
-    // Set configuration
+    // Exact configuration provided by the user
     window.LOCALO_FREE_TOOL = {
       container: "#free-tool",
       hidePoweredBy: true,
       token: "xLgoTWShqOQj8XH2n05F5I420rNWrxb1q5jLM7uypi0"
     };
 
-    // Append scripts
+    // Append script for Localo tool
     const script = document.createElement('script');
     script.src = "https://jstools.localo.app/scripts/freetool.js";
     script.async = true;
@@ -29,6 +29,8 @@ export const LocalRankChecker: React.FC = () => {
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
+      // Remove config to prevent leaks
+      delete window.LOCALO_FREE_TOOL;
     };
   }, []);
 
@@ -60,7 +62,7 @@ export const LocalRankChecker: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-4 md:p-8 min-h-[600px] relative overflow-hidden"
           >
-            <div id="free-tool" className="w-full h-full">
+            <div id="free-tool" className="w-full h-full min-h-[500px]">
               {/* Localo Tool renders here */}
               <div className="flex flex-col items-center justify-center py-20 text-slate-400">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lemon-500 mb-4"></div>

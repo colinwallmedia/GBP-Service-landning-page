@@ -38,7 +38,7 @@ export const SolutionVision: React.FC = () => {
           />
           <VisionCard 
             icon={TrendingUp}
-            title="20-50+ New Enquiries"
+            title="10-30+ New Enquiries"
             desc="Every month, from customers who already want the service you offer."
             delay={0.2}
           />

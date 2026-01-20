@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import { Hero } from './components/Hero';
 import { ProblemSection } from './components/ProblemSection';
 import { SolutionVision } from './components/SolutionVision';
@@ -14,19 +14,27 @@ import { LocalRankChecker } from './components/LocalRankChecker';
 
 const App: React.FC = () => {
   const [view, setView] = useState<'landing' | 'rank-checker'>('landing');
+  const [isPending, startTransition] = useTransition();
 
-  // Handle back/forward buttons or simple reset
+  // Handle scroll to top on view change
   useEffect(() => {
-    if (view === 'rank-checker') {
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }, [view]);
 
-  const navigateToRankChecker = () => setView('rank-checker');
-  const navigateToLanding = () => setView('landing');
+  const navigateToRankChecker = () => {
+    startTransition(() => {
+      setView('rank-checker');
+    });
+  };
+
+  const navigateToLanding = () => {
+    startTransition(() => {
+      setView('landing');
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-lemon-300 selection:text-lemon-900">
+    <div className={`min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-lemon-300 selection:text-lemon-900 transition-opacity duration-300 ${isPending ? 'opacity-70' : 'opacity-100'}`}>
       <StickyNav onAction={navigateToRankChecker} onLogoClick={navigateToLanding} isLanding={view === 'landing'} />
       <main>
         {view === 'landing' ? (

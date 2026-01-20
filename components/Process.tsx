@@ -83,7 +83,7 @@ export const Process: React.FC<ProcessProps> = ({ onAction }) => {
               className="w-full md:w-auto bg-lemon-400 text-slate-900 text-xl font-black py-6 px-12 rounded-2xl shadow-[0_20px_50px_rgba(250,204,21,0.3)] hover:bg-lemon-300 transition-all flex flex-col items-center justify-center gap-2 mx-auto"
             >
               <span className="flex items-center gap-3">
-                Unlock My Growth Plan
+                Unlock My Growth
                 <ArrowDown className="w-6 h-6" />
               </span>
             </motion.button>
