@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Star, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Star, CheckCircle2 } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onAction?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onAction }) => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-lemon-100/50 via-white to-fresh-50/30">
       {/* Decorative Animated Elements */}
@@ -47,7 +51,7 @@ export const Hero: React.FC = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.05] mb-8"
           >
             Wake Up to <span className="text-fresh-600 relative inline-block">
-              20-50 New Enquiries
+              10-30 New Enquiries
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 358 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 5.26C1 5.26 120.5 -1.24 357 5.26" stroke="#FACC15" strokeWidth="6" strokeLinecap="round"/>
               </svg>
@@ -67,10 +71,10 @@ export const Hero: React.FC = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={onAction}
               className="group bg-slate-900 text-white text-lg font-bold py-5 px-10 rounded-2xl shadow-2xl hover:bg-slate-800 transition-all flex items-center gap-3"
             >
-              Get Your Free Visibility Audit
+              See How You Rank For Your Service
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
             

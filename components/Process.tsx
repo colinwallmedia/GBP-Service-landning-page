@@ -2,7 +2,11 @@ import React from 'react';
 import { ArrowDown, CheckCircle, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export const Process: React.FC = () => {
+interface ProcessProps {
+  onAction?: () => void;
+}
+
+export const Process: React.FC<ProcessProps> = ({ onAction }) => {
   return (
     <section className="py-24 bg-white" id="cta-section">
       <div className="container mx-auto px-6">
@@ -75,6 +79,7 @@ export const Process: React.FC = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={onAction}
               className="w-full md:w-auto bg-lemon-400 text-slate-900 text-xl font-black py-6 px-12 rounded-2xl shadow-[0_20px_50px_rgba(250,204,21,0.3)] hover:bg-lemon-300 transition-all flex flex-col items-center justify-center gap-2 mx-auto"
             >
               <span className="flex items-center gap-3">
